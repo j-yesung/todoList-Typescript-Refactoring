@@ -3,13 +3,20 @@ import API from '../api/axios';
 export const useAxios = () => {
   const __getTodos = async () => {
     const response = await API.get('/todos');
-    console.log('response: ', response.data);
     return response.data;
   };
 
   const __addTodos = async (newTodo: any) => {
-    await API.post('/todos', newTodo);
+    return await API.post('/todos', newTodo);
   };
 
-  return { __getTodos, __addTodos };
+  const __updateTodos = async (todo: any) => {
+    return await API.patch(`/todos/${todo.id}`, { ...todo, isDone: !todo.isDone });
+  };
+
+  const __deleteTodos = async (id: string) => {
+    return await API.delete(`/todos/${id}`);
+  };
+
+  return { __getTodos, __addTodos, __deleteTodos, __updateTodos };
 };

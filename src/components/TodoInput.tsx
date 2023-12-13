@@ -9,7 +9,8 @@ export const TodoInput = () => {
   const { addTodos } = useTodos();
 
   const onClickAddHandler = () => {
-    addTodos({ id: shortid.generate(), title, content });
+    // TODO: 추가 객체 hook으로 빼기
+    addTodos({ id: shortid.generate(), title, content, isDone: false });
   };
 
   return (

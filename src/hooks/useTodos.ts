@@ -5,15 +5,13 @@ const QUERY_KEY = 'todos';
 
 export const useTodos = () => {
   const queryClient = useQueryClient();
-  const { __getTodos, __addTodos } = useAxios();
+  const { __getTodos, __addTodos, __updateTodos, __deleteTodos } = useAxios();
 
-  // 조회
-  const { data: todos } = useQuery({
+  const { data: todos, isLoading } = useQuery({
     queryKey: [QUERY_KEY],
     queryFn: __getTodos,
   });
 
-  // 추가
   const addTodoMutation = useMutation({
     mutationFn: __addTodos,
     onSuccess: () => {
@@ -21,7 +19,25 @@ export const useTodos = () => {
     },
   });
 
-  // 삭제
+  const updateTodoMutation = useMutation({
+    mutationFn: __updateTodos,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
+    },
+  });
 
-  return { todos, addTodos: addTodoMutation.mutate };
+  const deleteTodoMutation = useMutation({
+    mutationFn: __deleteTodos,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
+    },
+  });
+
+  return {
+    todos,
+    isLoading,
+    addTodos: addTodoMutation.mutate,
+    deleteTodos: deleteTodoMutation.mutate,
+    updateTodos: updateTodoMutation.mutate,
+  };
 };
