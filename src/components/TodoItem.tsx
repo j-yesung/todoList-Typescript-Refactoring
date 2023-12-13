@@ -1,14 +1,13 @@
 import React from 'react';
 import { useTodos } from '../hooks/useTodos';
 
-interface Todo {
-  id: string;
-  title: string;
-  content: string;
-  isDone: boolean;
-}
 interface ItemProps {
-  todo: Todo;
+  todo: {
+    id: string;
+    title: string;
+    content: string;
+    isDone: boolean;
+  };
   isLoading: boolean;
 }
 
@@ -17,7 +16,7 @@ export const TodoItem = (props: ItemProps) => {
   const { id, title, content, isDone } = todo;
   const { updateTodos, deleteTodos } = useTodos();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>로딩 중입니다...</div>;
 
   return (
     <>

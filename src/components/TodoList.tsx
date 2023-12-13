@@ -5,13 +5,12 @@ import { TodoItem } from './TodoItem';
 export const TodoList = () => {
   const { todos, isLoading } = useTodos();
 
-  // ..todos undefined 대기 로딩
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div>로딩 중입니다...</div>;
 
   return (
     <>
       <div>
-        <h1>🔥 할 일</h1>
+        <h1>🔥 할 일 목록</h1>
         {todos
           .filter((v: any) => !v.isDone)
           .map((todo: any) => (
@@ -19,7 +18,7 @@ export const TodoList = () => {
           ))}
       </div>
       <div>
-        <h1>✅ 완료</h1>
+        <h1>✅ 완료 목록</h1>
         {todos
           .filter((v: any) => v.isDone)
           .map((todo: any) => (
