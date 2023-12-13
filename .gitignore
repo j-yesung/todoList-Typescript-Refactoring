@@ -19,7 +19,7 @@
 .env.production.local
 
 # json-server
-db_back.json
+db.json
 
 npm-debug.log*
 yarn-debug.log*
