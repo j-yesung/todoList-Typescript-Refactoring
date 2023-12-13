@@ -1,9 +1,12 @@
 import React from 'react';
+import { TodoInput } from './components/TodoInput';
 
-export const App = () => {
+const App = () => {
   return (
     <>
-      <div>HELLO Typescript</div>
+      <TodoInput />
     </>
   );
 };
+
+export default App;
