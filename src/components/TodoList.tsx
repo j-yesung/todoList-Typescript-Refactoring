@@ -1,31 +1,30 @@
-import React from 'react';
 import { useTodos } from '../hooks/useTodos';
 import { TodoItem } from './TodoItem';
-import { Todo } from '../types/goodType';
+import { Todo } from '../types/commonType';
+import * as S from '../styles/TodoList.styled';
 
 export const TodoList = () => {
-  const { todos, isLoading } = useTodos();
+  const { todos, isLoading }: { todos: Todo[]; isLoading: boolean } = useTodos();
 
   if (isLoading) return <div>로딩 중입니다...</div>;
 
+  const renderTodoList = (title: string, isDone: boolean) => (
+    <>
+      <h2>{title}</h2>
+      <S.TodoList>
+        {todos
+          .filter(v => v.isDone === isDone)
+          .map(todo => (
+            <TodoItem key={todo.id} todo={todo} isLoading={isLoading} />
+          ))}
+      </S.TodoList>
+    </>
+  );
+
   return (
     <>
-      <div>
-        <h1>🔥 할 일 목록</h1>
-        {todos
-          .filter((v: Todo) => !v.isDone)
-          .map((todo: Todo) => (
-            <TodoItem key={todo.id} todo={todo} isLoading={isLoading} />
-          ))}
-      </div>
-      <div>
-        <h1>✅ 완료 목록</h1>
-        {todos
-          .filter((v: Todo) => v.isDone)
-          .map((todo: Todo) => (
-            <TodoItem key={todo.id} todo={todo} isLoading={isLoading} />
-          ))}
-      </div>
+      {renderTodoList('🔥 할 일 목록', false)}
+      {renderTodoList('✅ 완료 목록', true)}
     </>
   );
 };

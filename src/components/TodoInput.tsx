@@ -1,7 +1,7 @@
-import React from 'react';
 import { useInput } from '../hooks/useInput';
 import { useTodos } from '../hooks/useTodos';
 import shortid from 'shortid';
+import * as S from '../styles/TodoList.styled';
 
 export const TodoInput = () => {
   const [title, onChangeTitle] = useInput();
@@ -13,11 +13,15 @@ export const TodoInput = () => {
   };
 
   return (
-    <>
-      <div>TodoInput</div>
-      제목 : <input type="text" value={title} onChange={onChangeTitle} />
-      할일 : <input type="text" value={content} onChange={onChangeContent} />
-      <button onClick={onClickAddHandler}>추가</button>
-    </>
+    <div>
+      <S.TodoTitle>TODO LIST</S.TodoTitle>
+      <S.TodoForm>
+        제목 : <S.TodoInput type="text" value={title} onChange={onChangeTitle} />
+        할일 : <S.TodoInput type="text" value={content} onChange={onChangeContent} />
+        <S.Button onClick={onClickAddHandler} color="#e31c5f">
+          추가
+        </S.Button>
+      </S.TodoForm>
+    </div>
   );
 };
