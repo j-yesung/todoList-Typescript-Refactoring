@@ -1,4 +1,5 @@
 import API from '../api/axios';
+import { Todo } from '../types/goodType';
 
 export const useAxios = () => {
   const __getTodos = async () => {
@@ -6,11 +7,11 @@ export const useAxios = () => {
     return response.data;
   };
 
-  const __addTodos = async (newTodo: any) => {
+  const __addTodos = async (newTodo: Todo) => {
     return await API.post('/todos', newTodo);
   };
 
-  const __updateTodos = async (todo: any) => {
+  const __updateTodos = async (todo: Todo) => {
     return await API.patch(`/todos/${todo.id}`, { ...todo, isDone: !todo.isDone });
   };
 

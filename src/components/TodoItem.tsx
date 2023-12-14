@@ -1,13 +1,9 @@
 import React from 'react';
 import { useTodos } from '../hooks/useTodos';
+import { Todo } from '../types/goodType';
 
 interface ItemProps {
-  todo: {
-    id: string;
-    title: string;
-    content: string;
-    isDone: boolean;
-  };
+  todo: Todo;
   isLoading: boolean;
 }
 
