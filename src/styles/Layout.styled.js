@@ -5,7 +5,6 @@ export const LayoutMain = styled.div`
   height: 800px;
   padding: 20px;
   overflow-y: auto;
-  position: absolute;
   border-radius: 10px;
   background-color: #eee;
   border: 2px solid #fff;

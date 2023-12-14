@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-export const TodoFormWrapper = styled.div`
-  display: flex;
-`;
 export const TodoTitle = styled.h1`
   /* margin-bottom: 10px; */
 `;
@@ -33,6 +30,12 @@ export const TodoItem = styled.div`
 export const TodoItemTitle = styled.p`
   font-size: 20px;
   font-weight: bold;
+`;
+export const TodoItemContent = styled.p`
+  font-size: 15px;
+  /* height: 30px; */
+  /* background-color: #eee7da; */
+  /* font-weight: bold; */
 `;
 export const ButtonBox = styled.div`
   float: right;
