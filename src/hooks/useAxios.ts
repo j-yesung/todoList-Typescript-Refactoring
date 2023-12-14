@@ -1,4 +1,4 @@
-import API from '../api/axiosInterceptor';
+import API from '../api/base';
 import { Todo } from '../types/commonType';
 
 export const useAxios = () => {
