@@ -1,5 +1,4 @@
 import { useTodos } from '../hooks/useTodos';
-import { Todo } from '../types/commonType';
 import * as S from '../styles/TodoList.styled';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';

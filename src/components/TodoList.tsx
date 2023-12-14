@@ -1,6 +1,5 @@
 import { useTodos } from '../hooks/useTodos';
 import { TodoItem } from './TodoItem';
-import { Todo } from '../types/commonType';
 import * as S from '../styles/TodoList.styled';
 
 export const TodoList = () => {

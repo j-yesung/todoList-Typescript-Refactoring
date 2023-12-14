@@ -1,5 +1,4 @@
 import API from '../api/base';
-import { Todo } from '../types/commonType';
 
 export const useAxios = () => {
   const __getTodos = async () => {
