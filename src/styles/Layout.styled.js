@@ -1,20 +1,26 @@
 import styled from 'styled-components';
 
-export const LayoutWarpper = styled.div`
-  /* width: 100%;
-  height: 100%;
-  background-color: #191919; */
-`;
 export const LayoutMain = styled.div`
-  top: 50%;
-  left: 50%;
   width: 1200px;
   height: 800px;
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: absolute;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #eee;
-  border: 2px solid #191919;
-  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+
+  /* 스크롤바 */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* 스크롤바 막대 */
+  &::-webkit-scrollbar-thumb {
+    background-color: #bbab8c;
+    border-radius: 10px;
+  }
+  /* 스크롤바 배경  */
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
 `;
