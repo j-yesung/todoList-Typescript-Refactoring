@@ -1,5 +1,5 @@
 import API from '../api/axios';
-import { Todo } from '../types/goodType';
+import { Todo } from '../types/commonType';
 
 export const useAxios = () => {
   const __getTodos = async () => {
