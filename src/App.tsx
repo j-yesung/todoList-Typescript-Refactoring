@@ -1,4 +1,4 @@
-import { TodoInput } from './components/TodoInput';
+import { TodoForm } from './components/TodoForm';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { TodoList } from './components/TodoList';
 import { Layout } from './layout/Layout';
@@ -12,7 +12,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <GlobalStyle />
         <Layout>
-          <TodoInput />
+          <TodoForm />
           <TodoList />
         </Layout>
       </QueryClientProvider>
