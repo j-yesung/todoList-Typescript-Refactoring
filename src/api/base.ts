@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const userInstance = axios.create({
+const instance = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
-userInstance.interceptors.request.use(
+instance.interceptors.request.use(
   config => {
     return config;
   },
@@ -14,7 +14,7 @@ userInstance.interceptors.request.use(
   },
 );
 
-userInstance.interceptors.response.use(
+instance.interceptors.response.use(
   response => {
     return response;
   },
@@ -24,4 +24,4 @@ userInstance.interceptors.response.use(
   },
 );
 
-export default userInstance;
+export default instance;

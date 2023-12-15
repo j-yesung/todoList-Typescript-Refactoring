@@ -3,7 +3,7 @@ import { TodoItem } from './TodoItem';
 import * as S from '../styles/TodoList.styled';
 
 export const TodoList = () => {
-  const { todos, isLoading }: { todos: Todo[]; isLoading: boolean } = useTodos();
+  const { todos, isLoading } = useTodos();
 
   if (isLoading) return <div>로딩 중입니다...</div>;
 
@@ -12,7 +12,7 @@ export const TodoList = () => {
       <h2>{title}</h2>
       <S.TodoList>
         {todos
-          .filter(v => v.isDone === isDone)
+          ?.filter(v => v.isDone === isDone)
           .map(todo => (
             <TodoItem key={todo.id} todo={todo} isLoading={isLoading} />
           ))}
