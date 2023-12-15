@@ -1,16 +1,16 @@
 import { useInput } from '../hooks/useInput';
 import { useTodos } from '../hooks/useTodos';
-import shortid from 'shortid';
 import * as S from '../styles/TodoList.styled';
-import { toast } from 'react-toastify';
+import { useConfirm } from '../hooks/useConfirm';
 
 export const TodoForm = () => {
-  const { values, onChangeHandler, reset } = useInput({ title: '', content: '' });
+  const { values, onChangeHandler, reset, addTodoObject } = useInput({ title: '', content: '' });
+  const { checkAddTodo } = useConfirm('');
   const { addTodos } = useTodos();
 
   const onClickAddHandler = () => {
-    addTodos({ id: shortid.generate(), title: values.title, content: values.content, isDone: false });
-    toast.success('할 일이 추가되었습니다.');
+    addTodos(addTodoObject);
+    checkAddTodo();
     reset();
   };
 
