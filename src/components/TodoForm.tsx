@@ -4,7 +4,7 @@ import * as S from '../styles/TodoList.styled';
 import { useConfirm } from '../hooks/useConfirm';
 
 export const TodoForm = () => {
-  const { values, onChangeHandler, reset, addTodoObject } = useInput({ title: '', content: '' });
+  const { values, addTodoObject, onChangeHandler, reset } = useInput({ title: '', content: '' });
   const { checkAddTodo } = useConfirm('');
   const { addTodos } = useTodos();
 
