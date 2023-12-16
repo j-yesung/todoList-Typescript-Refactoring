@@ -1,10 +1,10 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import shortid from 'shortid';
 
-type T = { [key: string]: string };
+type UserTodo = { [key: string]: string };
 
-export const useInput = (initialState: T) => {
-  const [values, setValues] = useState<T>(initialState);
+export const useInput = (initialState: UserTodo) => {
+  const [values, setValues] = useState<UserTodo>(initialState);
   const addTodoObject = { id: shortid.generate(), title: values.title, content: values.content, isDone: false };
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
