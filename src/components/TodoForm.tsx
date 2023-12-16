@@ -16,7 +16,7 @@ export const TodoForm = () => {
 
   return (
     <div>
-      <S.TodoTitle>TODO LIST</S.TodoTitle>
+      <h1>TODO LIST</h1>
       <S.TodoForm>
         제목 : <S.TodoInput type="text" name="title" value={values.title} onChange={onChangeHandler} />
         내용 : <S.TodoInput type="text" name="content" value={values.content} onChange={onChangeHandler} />

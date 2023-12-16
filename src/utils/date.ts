@@ -1,27 +1,26 @@
-import moment from 'moment';
+export const displayCreateAt = (createdAt: Date | string) => {
+  const date = new Date(createdAt);
+  const now = Date.now();
+  const milliSeconds = now - date.getTime();
 
-export const getDayMinuteCounter = (date?: Date): number | string => {
-  if (!date) {
-    return '';
+  const seconds = milliSeconds / 1000;
+  const minutes = seconds / 60;
+  const hours = minutes / 60;
+  const days = hours / 24;
+  const months = days / 30;
+  const years = months / 12;
+
+  if (seconds < 60) {
+    return '방금 전';
+  } else if (minutes < 60) {
+    return `${Math.floor(minutes)}분 전`;
+  } else if (hours < 24) {
+    return `${Math.floor(hours)}시간 전`;
+  } else if (days < 30) {
+    return `${Math.floor(days)}일 전`;
+  } else if (months < 12) {
+    return `${Math.floor(months)}달 전`;
+  } else {
+    return `${Math.floor(years)}년 전`;
   }
-
-  const today = moment();
-  const postingDate = moment(date);
-  const dayDiff = postingDate.diff(today, 'days');
-  const hourDiff = postingDate.diff(today, 'hours');
-  const minutesDiff = postingDate.diff(today, 'minutes');
-
-  if (dayDiff === 0 && hourDiff === 0) {
-    // 작성한지 1시간도 안지났을때
-    const minutes = Math.ceil(-minutesDiff);
-    return minutes + '분 전'; // '분' 로 표시
-  }
-
-  if (dayDiff === 0 && hourDiff <= 24) {
-    // 작성한지 1시간은 넘었지만 하루는 안지났을때,
-    const hour = Math.ceil(-hourDiff);
-    return hour + '시간 전'; // '시간'으로 표시
-  }
-
-  return -dayDiff + '일 전'; // '일'로 표시
 };
