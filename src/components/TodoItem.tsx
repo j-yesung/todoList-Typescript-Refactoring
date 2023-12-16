@@ -4,7 +4,7 @@ import * as S from '../styles/TodoList.styled';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }) => {
-  const { id, title, content, isDone } = todo;
+  const { id, title, content, date, isDone } = todo;
   const { updateTodos } = useTodos();
   const { checkDeleteTodo } = useConfirm(id);
 
@@ -15,6 +15,7 @@ export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }
       <S.TodoItem>
         <S.TodoItemTitle>{title}</S.TodoItemTitle>
         <S.TodoItemContent>{content}</S.TodoItemContent>
+        <p>{date}</p>
         <S.ButtonBox>
           <S.Button onClick={() => updateTodos(todo)} color="#0abd00">
             {isDone ? '취소' : '완료'}
