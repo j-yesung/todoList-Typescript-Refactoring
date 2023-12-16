@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAxios } from './useAxios';
 
-enum queryKey {
+const enum queryKey {
   TODO = 'TODO',
 }
 
@@ -12,6 +12,7 @@ export const useTodos = () => {
   const { data: todos, isLoading } = useQuery({
     queryKey: [queryKey.TODO],
     queryFn: __getTodos,
+    refetchOnWindowFocus: false,
   });
 
   const addTodoMutation = useMutation({
