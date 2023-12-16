@@ -1,46 +1,23 @@
-# Getting Started with Create React App
+# Todo List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> **TodoList 컴포넌트 분리 `components`**
 
-## Available Scripts
+- TodoInput (**입력 박스**)
+- TodoList (**목록**)
+- TodoItem (**목록 아이템**)
 
-In the project directory, you can run:
+> **인터셉터 `api`**
 
-### `yarn start`
+- axios 통신 전 별도의 예외 처리가 필요하면 `axios.ts` 인스턴스에 로직을 추가하시면 됩니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+> **커스텀 훅 `hooks`**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- useAxios (**json-server 데이터 통신**)
+- useInput (**form 입력**)
+- useTodos (**useAxios 호출하는 곳 - CRUD 로직**)
+  - queryKey의 경우, enum으로 관리하였으나, 만약 추가될 시 따로 디렉토리를 추가하여 보관해야 합니다.
+- useConfirm (**CRUD 관련 UX 정의**)
 
-### `yarn test`
+> **타입 분기처리 `types`**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- commonType (**전역으로 쓰이는 interface 또는 type**)
