@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-export const TodoTitle = styled.h1`
-  /* margin-bottom: 10px; */
-`;
 export const TodoForm = styled.div`
   gap: 10px;
   display: flex;
@@ -27,15 +24,16 @@ export const TodoItem = styled.div`
   margin-bottom: 10px;
   border: 2px solid #191919;
 `;
-export const TodoItemTitle = styled.p`
-  font-size: 20px;
+export const TodoItemTitle = styled.h2`
   font-weight: bold;
 `;
 export const TodoItemContent = styled.p`
   font-size: 15px;
-  /* height: 30px; */
-  /* background-color: #eee7da; */
-  /* font-weight: bold; */
+`;
+export const TodoItemDate = styled.p`
+  font-size: 13px;
+  display: flex;
+  flex-direction: row-reverse;
 `;
 export const ButtonBox = styled.div`
   float: right;
@@ -44,7 +42,7 @@ export const Button = styled.button`
   color: #fff;
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 5px;
   margin-left: 5px;
   font-size: 16px;
   cursor: pointer;
