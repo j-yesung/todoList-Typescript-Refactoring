@@ -1,10 +1,12 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import shortid from 'shortid';
+import Swal from 'sweetalert2';
 
 type UserTodo = { [key: string]: string };
 
 export const useInput = (initialState: UserTodo) => {
   const [values, setValues] = useState<UserTodo>(initialState);
+  console.log('values: ', values);
   const addTodoObject = {
     id: shortid.generate(),
     title: values.title,
@@ -19,5 +21,12 @@ export const useInput = (initialState: UserTodo) => {
   };
 
   const reset = useCallback(() => setValues(initialState), [initialState]);
-  return { values, addTodoObject, onChangeHandler, reset };
+
+  const checkValidation = () => {
+    if (values.title === '' || values.content === '') {
+      return Swal.fire('빈칸을 채워주세요.', '', 'warning');
+    }
+  };
+
+  return { values, addTodoObject, onChangeHandler, reset, checkValidation };
 };
