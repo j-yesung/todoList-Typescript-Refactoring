@@ -9,10 +9,10 @@ export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }
   const { id, title, content, date, isDone } = todo;
   const { updateTodos } = useTodos();
   const { checkDeleteTodo } = useConfirm(id);
-  const [tiem, setTiem] = useState('');
+  const [time, settime] = useState('');
 
   useEffect(() => {
-    setTiem(displayCreateAt(date));
+    settime(displayCreateAt(date));
   }, [date]);
 
   if (isLoading) return <div>로딩 중입니다...</div>;
@@ -20,9 +20,7 @@ export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }
   return (
     <>
       <S.TodoItem>
-        {/* <S.TodoItemDate>
-        </S.TodoItemDate> */}
-        <S.TodoItemDate>{tiem}</S.TodoItemDate>
+        <S.TodoItemDate>{time}</S.TodoItemDate>
         <S.TodoItemTitle>{title}</S.TodoItemTitle>
         <S.TodoItemContent>{content}</S.TodoItemContent>
         <S.ButtonBox>

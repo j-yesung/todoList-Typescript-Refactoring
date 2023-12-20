@@ -6,7 +6,6 @@ type UserTodo = { [key: string]: string };
 
 export const useInput = (initialState: UserTodo) => {
   const [values, setValues] = useState<UserTodo>(initialState);
-  console.log('values: ', values);
   const addTodoObject = {
     id: shortid.generate(),
     title: values.title,
