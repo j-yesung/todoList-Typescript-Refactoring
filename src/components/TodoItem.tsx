@@ -4,15 +4,13 @@ import { useConfirm } from '../hooks/useConfirm';
 import { MyButton } from './common/MyButton';
 import { displayCreateAt } from '../utils/date';
 
-export const TodoItem = ({
-  todo,
-  isLoading,
-  updateTodos,
-}: {
+type Props = {
   todo: Todo;
   isLoading: boolean;
   updateTodos: (todo: Todo) => void;
-}) => {
+};
+
+export const TodoItem = ({ todo, isLoading, updateTodos }: Props) => {
   const { id, title, content, date, isDone } = todo;
   const { checkDeleteTodo } = useConfirm(id);
 
@@ -33,8 +31,6 @@ export const TodoItem = ({
           <MyButton color="warning" onClick={checkDeleteTodo}>
             삭제
           </MyButton>
-          {/* <button onClick={() => updateTodos(todo)}>{isDone ? '취소' : '완료'}</button>
-          <button onClick={checkDeleteTodo}>삭제</button> */}
         </S.ButtonBox>
       </S.TodoItem>
     </>

@@ -2,10 +2,10 @@ import { ChangeEvent, useCallback, useState } from 'react';
 import shortid from 'shortid';
 import Swal from 'sweetalert2';
 
-type UserTodo = { [key: string]: string };
+type UserTodo = Record<string, string>;
 
 export const useInput = (initialState: UserTodo) => {
-  const [values, setValues] = useState<UserTodo>(initialState);
+  const [values, setValues] = useState(initialState);
   const addTodoObject = {
     id: shortid.generate(),
     title: values.title,
