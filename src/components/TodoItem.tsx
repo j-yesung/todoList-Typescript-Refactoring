@@ -1,19 +1,22 @@
-import { useEffect, useState } from 'react';
-import { useConfirm } from '../hooks/useConfirm';
-import { useTodos } from '../hooks/useTodos';
 import * as S from '../styles/TodoList.styled';
-import 'react-toastify/dist/ReactToastify.css';
+import { useMemo } from 'react';
+import { useConfirm } from '../hooks/useConfirm';
+import { MyButton } from './common/MyButton';
 import { displayCreateAt } from '../utils/date';
 
-export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }) => {
+export const TodoItem = ({
+  todo,
+  isLoading,
+  updateTodos,
+}: {
+  todo: Todo;
+  isLoading: boolean;
+  updateTodos: (todo: Todo) => void;
+}) => {
   const { id, title, content, date, isDone } = todo;
-  const { updateTodos } = useTodos();
   const { checkDeleteTodo } = useConfirm(id);
-  const [time, settime] = useState('');
 
-  useEffect(() => {
-    settime(displayCreateAt(date));
-  }, [date]);
+  const time = useMemo(() => displayCreateAt(date), [date]);
 
   if (isLoading) return <div>로딩 중입니다...</div>;
 

@@ -1,12 +1,13 @@
-import { useInput } from '../hooks/useInput';
-import { useTodos } from '../hooks/useTodos';
 import * as S from '../styles/TodoList.styled';
+import { useInput } from '../hooks/useInput';
 import { useConfirm } from '../hooks/useConfirm';
+import { MyButton } from './common/MyButton';
+import { useTodosMutation } from '../hooks/useTodosMutation';
 
 export const TodoForm = () => {
   const { values, addTodoObject, onChangeHandler, reset, checkValidation } = useInput({ title: '', content: '' });
   const { checkAddTodo } = useConfirm('');
-  const { addTodos } = useTodos();
+  const { addTodos } = useTodosMutation();
 
   const onClickAddHandler = () => {
     if (checkValidation()) return;

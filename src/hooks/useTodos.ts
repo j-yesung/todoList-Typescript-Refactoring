@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useAxios } from './useAxios';
 
 const enum queryKey {
@@ -6,8 +6,7 @@ const enum queryKey {
 }
 
 export const useTodos = () => {
-  const queryClient = useQueryClient();
-  const { __getTodos, __addTodos, __updateTodos, __deleteTodos } = useAxios();
+  const { __getTodos } = useAxios();
 
   const { data: todos, isLoading } = useQuery({
     queryKey: [queryKey.TODO],
@@ -15,32 +14,8 @@ export const useTodos = () => {
     refetchOnWindowFocus: false,
   });
 
-  const addTodoMutation = useMutation({
-    mutationFn: __addTodos,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKey.TODO] });
-    },
-  });
-
-  const updateTodoMutation = useMutation({
-    mutationFn: __updateTodos,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKey.TODO] });
-    },
-  });
-
-  const deleteTodoMutation = useMutation({
-    mutationFn: __deleteTodos,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [queryKey.TODO] });
-    },
-  });
-
   return {
     todos,
     isLoading,
-    addTodos: addTodoMutation.mutate,
-    deleteTodos: deleteTodoMutation.mutate,
-    updateTodos: updateTodoMutation.mutate,
   };
 };

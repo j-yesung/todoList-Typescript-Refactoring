@@ -1,9 +1,11 @@
 import { useTodos } from '../hooks/useTodos';
 import { TodoItem } from './TodoItem';
 import * as S from '../styles/TodoList.styled';
+import { useTodosMutation } from '../hooks/useTodosMutation';
 
 export const TodoList = () => {
   const { todos, isLoading } = useTodos();
+  const { updateTodos } = useTodosMutation();
 
   if (isLoading) return <div>로딩 중입니다...</div>;
 
@@ -14,7 +16,7 @@ export const TodoList = () => {
         {todos
           ?.filter(v => v.isDone === isDone)
           .map(todo => (
-            <TodoItem key={todo.id} todo={todo} isLoading={isLoading} />
+            <TodoItem key={todo.id} todo={todo} isLoading={isLoading} updateTodos={updateTodos} />
           ))}
       </S.TodoList>
     </>

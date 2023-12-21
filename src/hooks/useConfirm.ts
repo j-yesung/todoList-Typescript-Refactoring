@@ -1,8 +1,8 @@
-import { useTodos } from './useTodos';
 import Swal from 'sweetalert2';
+import { useTodosMutation } from './useTodosMutation';
 
 export const useConfirm = (id: string) => {
-  const { deleteTodos } = useTodos();
+  const { deleteTodos } = useTodosMutation();
 
   const checkAddTodo = () => Swal.fire('등록을 완료했습니다.', '', 'success');
 
