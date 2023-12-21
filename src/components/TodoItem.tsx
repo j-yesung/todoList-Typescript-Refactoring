@@ -24,12 +24,14 @@ export const TodoItem = ({ todo, isLoading }: { todo: Todo; isLoading: boolean }
         <S.TodoItemTitle>{title}</S.TodoItemTitle>
         <S.TodoItemContent>{content}</S.TodoItemContent>
         <S.ButtonBox>
-          <S.Button onClick={() => updateTodos(todo)} color="#0abd00">
+          <MyButton color="success" onClick={() => updateTodos(todo)}>
             {isDone ? '취소' : '완료'}
-          </S.Button>
-          <S.Button onClick={checkDeleteTodo} color="#ff4444">
+          </MyButton>
+          <MyButton color="warning" onClick={checkDeleteTodo}>
             삭제
-          </S.Button>
+          </MyButton>
+          {/* <button onClick={() => updateTodos(todo)}>{isDone ? '취소' : '완료'}</button>
+          <button onClick={checkDeleteTodo}>삭제</button> */}
         </S.ButtonBox>
       </S.TodoItem>
     </>

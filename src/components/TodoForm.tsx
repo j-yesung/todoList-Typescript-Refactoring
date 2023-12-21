@@ -21,9 +21,9 @@ export const TodoForm = () => {
       <S.TodoForm>
         제목 : <S.TodoInput type="text" name="title" value={values.title} onChange={onChangeHandler} />
         내용 : <S.TodoInput type="text" name="content" value={values.content} onChange={onChangeHandler} />
-        <S.Button onClick={onClickAddHandler} color="#e31c5f">
+        <MyButton color="default" onClick={onClickAddHandler}>
           추가
-        </S.Button>
+        </MyButton>
       </S.TodoForm>
     </div>
   );
