@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const CustomButton = styled.button<{ color: string }>`
@@ -21,30 +21,24 @@ const CustomButton = styled.button<{ color: string }>`
   }
 `;
 
-const colors: BtnColor = {
+type StricChildren<T> = T & { children: ReactNode };
+type ButtonColors = 'default' | 'success' | 'primary' | 'warning';
+
+type ButtonProps = {
+  color: ButtonColors;
+  onClick: () => void | Promise<void>;
+};
+
+const btnColors: Record<ButtonColors, string> = {
   default: '#e31c5f',
   success: '#0abd00',
   primary: '#e31c5f',
   warning: '#ff4444',
 };
 
-type BtnColor = {
-  default: string;
-  success: string;
-  primary: string;
-  warning: string;
-};
-
-interface ButtonProps {
-  color: keyof BtnColor;
-  onClick?: () => void | Promise<void>;
-}
-
-export const MyButton = ({ children, color, onClick }: PropsWithChildren<ButtonProps>) => {
-  const choseColor = colors[color]; // 키 값 접근
-
+export const MyButton = ({ children, color, onClick }: StricChildren<ButtonProps>) => {
   return (
-    <CustomButton color={choseColor} onClick={onClick}>
+    <CustomButton color={btnColors[color]} onClick={onClick}>
       {children}
     </CustomButton>
   );
